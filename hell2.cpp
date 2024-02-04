@@ -3,9 +3,17 @@
 #include <iostream>
 #include <unordered_map>
 
+// Benches (Ryzen 3600X CPU -Ofast flag)
+// 445 microseconds, 568 microseconds, 827 microseconds, 705 microseconds
+
 std::unordered_map<int, long long int> cache;
 
 void sum_up_to_n(int n) {
+
+  if (cache.find(n) != cache.end()) {
+    std::cout << "Sum of integers up to " << n << ": " << cache[n] << '\n';
+    return;
+  }
   // Initialize sum variable
   long long int sum = 0;
 
